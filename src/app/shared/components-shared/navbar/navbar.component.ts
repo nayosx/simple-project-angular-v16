@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+  isCollapsed = true;
+
   constructor(
     private sessionService:SessionStorageService,
     private router: Router,
@@ -18,6 +20,11 @@ export class NavbarComponent {
   handleSession():void {
     this.sessionService.clearStorage();
     this.router.navigate(['']);
+  }
+
+  handleBurger():void {
+    this.isCollapsed = !this.isCollapsed;
+    console.log('handle burger', this.isCollapsed);
   }
 
 }
