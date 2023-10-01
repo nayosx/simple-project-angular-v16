@@ -1,0 +1,61 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+import { MessageOption } from 'src/app/shared/models/message.model';
+import { User } from 'src/app/shared/models/user.model';
+import { UserFakerService } from 'src/app/shared/services/user-faker.service';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  encapsulation: ViewEncapsulation.None
+})
+export class LoginComponent {
+
+  alert: MessageOption = {
+    msg: '',
+    className: 'alert-danger'
+  };
+  isError: boolean = false;
+  loginForm: FormGroup;
+
+  constructor(
+    private userService: UserFakerService,
+    private formBuilder: FormBuilder,
+    private sessionService:SessionStorageService,
+    private router: Router,
+  ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this._validateUser();
+    }
+  }
+
+  private _validateUser(): void {
+    const user: User = this.loginForm.value as User;
+    this.userService.verify(user).subscribe({
+      next: response => {
+        if (response.isOk) {
+          this.alert.msg = response.msg;
+          this.isError = false;
+          this.sessionService.setItem(environment.U_DATA, response.data);
+          this.router.navigate([`${environment.pageDetails}`]);
+          
+        } else {
+          this.alert.msg = response.msg;
+          this.isError = true;
+        }
+      }
+    });
+  }
+
+}

@@ -1,0 +1,5 @@
+<ng-container *ngIf="Message">
+    <div class="alert" [ngClass]="Message.className" role="alert">
+        {{Message.msg}}
+    </div>
+</ng-container>
