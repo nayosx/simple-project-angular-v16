@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 import { MasterPageRoutingModule } from './master-page-routing.module';
 import { IndexMasterComponent } from './index-master/index-master.component';
@@ -19,7 +20,8 @@ import { CreateComponent } from '../../../pages/crud/create/create.component';
     imports: [
         CommonModule,
         MasterPageRoutingModule,
-        ComponentsSharedModule
+        ComponentsSharedModule,
+        HttpClientModule,
     ]
 })
 export class MasterPageModule { }
