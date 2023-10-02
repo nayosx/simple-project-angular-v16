@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Post } from 'src/app/shared/models/post.model';
-import { LibraryService } from 'src/app/shared/services/library.service';
 import { PostsService } from 'src/app/shared/services/posts.service';
 
 @Component({
@@ -14,8 +13,7 @@ export class ListElementComponent implements OnInit{
   listPost:Post[] = [];
 
   constructor(
-    private libService:LibraryService,
-    private postService:PostsService
+    private postService:PostsService,
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +27,20 @@ export class ListElementComponent implements OnInit{
         console.log(response);
         this.listPost = response;
       },
+      error: (error:HttpErrorResponse) => {
+        console.log(error);
+      }
+    });
+  }
+
+  handleDelete(post:Post):void {
+
+  }
+
+
+  private _delete(post:Post):void {
+    this.postService.deletePost(post.id).subscribe({
+      next: respose => {},
       error: (error:HttpErrorResponse) => {
         console.log(error);
       }

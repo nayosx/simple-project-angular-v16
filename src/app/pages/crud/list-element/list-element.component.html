@@ -14,8 +14,8 @@
             <td>{{item.body}}</td>
             <td class="center-for-td width-x10">
                 <div class="">
-                    <button class="btn btn-outline-secondary">Edit</button>
-                    <button class="btn btn-outline-danger">Delete</button>
+                    <button class="btn btn-outline-secondary" type="button" routerLink="/edit/{{item.id}}">Edit</button>
+                    <button class="btn btn-outline-danger" type="button" (click)="handleDelete(item)">Delete</button>
                 </div>
             </td>
         </tr>
