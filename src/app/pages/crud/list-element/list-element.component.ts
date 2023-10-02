@@ -47,12 +47,16 @@ export class ListElementComponent implements OnInit{
   private _delete(post:Post):void {
     this.postService.deletePost(post.id).subscribe({
       next: respose => {
-        this._getAllPosts();
+        this._deleteElementOnArray(post.id);
       },
       error: (error:HttpErrorResponse) => {
         console.log(error);
       }
     });
+  }
+
+  private _deleteElementOnArray(id:number):void {
+    this.listPost = this.listPost.filter(item => item.id != id);
   }
   
   openModal(template: TemplateRef<any>, item:Post) {
