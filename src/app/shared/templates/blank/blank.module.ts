@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BlankRoutingModule } from './blank-routing.module';
-import { IndexBlankComponent } from './index-blank/index-blank.component';
+import { IndexBlankComponent } from './layout-blank/index-blank.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
-import { ComponentsSharedModule } from '../../components-shared/components-shared.module';
+import { ComponentsSharedModule } from '../../components/components-shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 

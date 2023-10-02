@@ -1,1 +1,23 @@
-<p>list-element works!</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listPost">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.title}}</td>
+            <td>{{item.body}}</td>
+            <td class="center-for-td width-x10">
+                <div class="">
+                    <button class="btn btn-outline-secondary">Edit</button>
+                    <button class="btn btn-outline-danger">Delete</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

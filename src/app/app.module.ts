@@ -4,9 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BlankModule } from './shared/template/blank/blank.module';
-import { MasterPageModule } from './shared/template/master-page/master-page.module';
+import { BlankModule } from './shared/templates/blank/blank.module';
+import { MasterPageModule } from './shared/templates/master-page/master-page.module';
 import { AutocompleteOffDirective } from './shared/directives/autocomplete-off.directive';
+import { ComponentsSharedModule } from './shared/components/components-shared.module';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './shared/interceptors/http-interceptor.service';
 
 
 @NgModule({
@@ -20,8 +24,16 @@ import { AutocompleteOffDirective } from './shared/directives/autocomplete-off.d
     BrowserAnimationsModule,
     BlankModule,
     MasterPageModule,
+    ComponentsSharedModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

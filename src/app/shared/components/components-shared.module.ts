@@ -4,11 +4,13 @@ import { AlertComponent } from './alert/alert.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AlertComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
   exports: [
     AlertComponent,
     NavbarComponent,
+    LoadingComponent,
   ]
 })
 export class ComponentsSharedModule { }

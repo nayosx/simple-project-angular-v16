@@ -1,0 +1,31 @@
+@import "./loading.scss";
+
+$min-width: 1rem;
+@for $i from 1 through 20 {
+    .width-x#{$i} {
+      width: $min-width * $i;
+    }
+}
+.defaults {
+    position: relative;
+
+    .for-loading {
+        position: absolute;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0 0 0 / 43%)
+    }
+}
+.mtb-default {
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+}
+
+.center-for-td {
+    vertical-align: middle;
+}
+
