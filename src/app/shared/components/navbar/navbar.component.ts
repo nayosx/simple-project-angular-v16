@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit{
 
   handleSession():void {
     this.sessionService.clearStorage();
-    this.router.navigate(['']);
+    this.router.navigate([`/${environment.routes.login}`]);
   }
 
   handleBurger():void {

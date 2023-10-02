@@ -4,7 +4,7 @@ export const environment = {
         crud: {
             add: 'add',
             edit: 'edit',
-            home: 'home'
+            home: ''
         },
         login: 'login'
     },

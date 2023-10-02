@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MessageOption } from 'src/app/shared/models/message.model';
 import { User } from 'src/app/shared/models/user.model';
 import { UserFakerService } from 'src/app/shared/services/user-faker.service';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   alert: MessageOption = {
     msg: '',
@@ -32,6 +32,12 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+  }
+
+  ngOnInit(): void {
+    if(typeof this.sessionService.getItem(environment.U_DATA) !== undefined) {
+      this.router.navigate([`${environment.routes.crud.home}`]);
+    }
   }
 
   onSubmit() {
