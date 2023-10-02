@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageOption } from 'src/app/shared/models/message.model';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostsService } from 'src/app/shared/services/posts.service';
 import { environment } from 'src/environments/environment';
@@ -15,7 +16,14 @@ import { environment } from 'src/environments/environment';
 export class EditComponent implements OnInit{
 
   form:FormGroup;
-  errorMessage:string = environment.messages.minLeng;
+  errorMessageMinLng:string = environment.messages.minLeng;
+
+  alert: MessageOption = {
+    msg: environment.messages.errorUnknowSave,
+    className: 'alert-danger'
+  };
+
+  isError: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,6 +63,7 @@ export class EditComponent implements OnInit{
 
   onSubmit() {
     if (this.form.valid) {
+      this.isError = false;
       const post:Post = this.form.value;
       this.postService.updatePost(post.id, post).subscribe({
         next: response => {
@@ -62,6 +71,7 @@ export class EditComponent implements OnInit{
         }, 
         error: (error:HttpErrorResponse) => {
           console.log(error);
+          this.isError = true;
         }
       });
     }

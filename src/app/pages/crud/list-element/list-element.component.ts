@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
-import { Post } from 'src/app/shared/models/post.model';
+import { DefaultPost, Post } from 'src/app/shared/models/post.model';
 import { PostsService } from 'src/app/shared/services/posts.service';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { environment } from 'src/environments/environment';
+import { MessageOption } from 'src/app/shared/models/message.model';
 
 @Component({
   selector: 'app-list-element',
@@ -18,12 +19,14 @@ export class ListElementComponent implements OnInit{
 
   pageAdd:string = environment.routes.crud.add;
 
-  postToDelete:Post = {
-    id:0,
-    userId: 0,
-    title: '',
-    body: ''
+  postToDelete:Post = {...DefaultPost};
+
+  alert: MessageOption = {
+    msg: environment.messages.errorUnknowSave,
+    className: 'alert-danger'
   };
+
+  isError: boolean = false;
 
   constructor(
     private postService:PostsService,
@@ -31,18 +34,18 @@ export class ListElementComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this._getAllPosts();
+    this.getAllPosts();
   }
 
 
-  private _getAllPosts():void {
+  getAllPosts():void {
+    this.isError = false;
     this.postService.getAllPosts().subscribe({
       next: response => {
-        console.log(response);
         this.listPost = response;
       },
       error: (error:HttpErrorResponse) => {
-        console.log(error);
+        this.isError = true;
       }
     });
   }

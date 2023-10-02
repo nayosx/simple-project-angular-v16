@@ -9,6 +9,7 @@ export const environment = {
         login: 'login'
     },
     messages:{
-        minLeng:'The miminum character is 3'
+        minLeng:'The mininum character is 3',
+        errorUnknowSave: 'An error occurred while saving. Try again',
     }
 };
