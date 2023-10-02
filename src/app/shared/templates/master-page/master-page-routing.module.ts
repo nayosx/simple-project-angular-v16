@@ -3,18 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from 'src/app/pages/crud/create/create.component';
 import { EditComponent } from 'src/app/pages/crud/edit/edit.component';
 import { ListElementComponent } from 'src/app/pages/crud/list-element/list-element.component';
+import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
   {
-    path: 'details',
+    path: environment.routes.crud.home,
     component: ListElementComponent
   },
   {
-    path: 'create',
+    path: environment.routes.crud.add,
     component: CreateComponent
   },
   {
-    path: 'edit/:id',
+    path: `${environment.routes.crud.edit}/:id`,
     component: EditComponent
   },
 ];

@@ -5,12 +5,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoadingComponent } from './loading/loading.component';
+import { InputErrorComponent } from './input-error/input-error.component';
 
 @NgModule({
   declarations: [
     AlertComponent,
     NavbarComponent,
-    LoadingComponent
+    LoadingComponent,
+    InputErrorComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { LoadingComponent } from './loading/loading.component';
     AlertComponent,
     NavbarComponent,
     LoadingComponent,
+    InputErrorComponent
   ]
 })
 export class ComponentsSharedModule { }

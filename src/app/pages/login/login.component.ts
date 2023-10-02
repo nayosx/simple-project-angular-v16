@@ -48,7 +48,7 @@ export class LoginComponent {
           this.alert.msg = response.msg;
           this.isError = false;
           this.sessionService.setItem(environment.U_DATA, response.data);
-          this.router.navigate([`${environment.pageDetails}`]);
+          this.router.navigate([`${environment.routes.crud.home}`]);
           
         } else {
           this.alert.msg = response.msg;

@@ -10,9 +10,9 @@ export class UserFakerService {
 
   private user:User = {
     id: 1,
-    name: 'NayosX',
-    email: 'ness@mail.com',
-    password: '1234'
+    name: 'User Tomdux',
+    email: 'info@tomdux.com',
+    password: '12345678'
   };
 
   constructor() { }

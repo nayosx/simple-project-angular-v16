@@ -1,29 +1,38 @@
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Body</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of listPost">
-                <th scope="row">{{item.id}}</th>
-                <td>{{item.title}}</td>
-                <td>{{item.body}}</td>
-                <td class="center-for-td width-x10">
-                    <div class="">
-                        <button class="btn btn-outline-secondary" type="button" routerLink="/edit/{{item.id}}">Edit</button>
-                        <button class="btn btn-outline-danger" type="button" (click)="openModal(template, item)">Delete</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success" routerLink="/{{pageAdd}}">Add post</button>
+        </div>
+        <hr />
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Body</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listPost">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.title}}</td>
+                        <td>{{item.body}}</td>
+                        <td class="center-for-td width-x10">
+                            <div class="">
+                                <button class="btn btn-outline-secondary" type="button" routerLink="/edit/{{item.id}}">Edit</button>
+                                <button class="btn btn-outline-danger" type="button" (click)="openModal(template, item)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
 
 <ng-template #template>
 

@@ -9,6 +9,8 @@ import { ListElementComponent } from '../../../pages/crud/list-element/list-elem
 import { EditComponent } from '../../../pages/crud/edit/edit.component';
 import { CreateComponent } from '../../../pages/crud/create/create.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
     declarations: [
@@ -22,6 +24,8 @@ import { CreateComponent } from '../../../pages/crud/create/create.component';
         MasterPageRoutingModule,
         ComponentsSharedModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class MasterPageModule { }

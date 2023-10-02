@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: environment.routes.login,
     component: LoginComponent,
   }
 ];

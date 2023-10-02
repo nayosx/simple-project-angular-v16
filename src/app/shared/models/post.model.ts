@@ -4,3 +4,10 @@ export interface Post {
     title:  string;
     body:   string;
 }
+
+export const DefaultPost:Post = {
+    userId: 1,
+    id: 0,
+    title: '',
+    body: ''
+};

@@ -4,6 +4,7 @@ import { Post } from 'src/app/shared/models/post.model';
 import { PostsService } from 'src/app/shared/services/posts.service';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-element',
@@ -14,6 +15,8 @@ export class ListElementComponent implements OnInit{
 
   listPost:Post[] = [];
   modalRef?: BsModalRef;
+
+  pageAdd:string = environment.routes.crud.add;
 
   postToDelete:Post = {
     id:0,
