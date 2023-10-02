@@ -11,6 +11,7 @@ import { ComponentsSharedModule } from './shared/components/components-shared.mo
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './shared/interceptors/http-interceptor.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { HttpInterceptorService } from './shared/interceptors/http-interceptor.s
     MasterPageModule,
     ComponentsSharedModule,
     HttpClientModule,
+    ModalModule.forRoot(),
   ],
   providers: [
     {
