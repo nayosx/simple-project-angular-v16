@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit{
   isError: boolean = false;
   loginForm: FormGroup;
 
+  msgMail:string = environment.messages.errorValidMail;
+  msgPassword:string = environment.messages.errorPasswordRequired;
+
   constructor(
     private userService: UserFakerService,
     private formBuilder: FormBuilder,
